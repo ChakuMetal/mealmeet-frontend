@@ -8,11 +8,9 @@ import axios from "axios";
 // Si mañana cambia la URL del backend (de localhost a Render),
 // lo cambias en UN lugar, no en 10 componentes diferentes.
 
-const API_BASE_URL = "https://mealmeet-backend.onrender.com/api";
-
 // Crear instancia de axios con configuración base
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
