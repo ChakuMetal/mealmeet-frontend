@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createRecipe } from "../services/recipeService";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getRecipeById, updateRecipe } from "../services/recipeService";
 
-function CreateRecipePage() {
+function EditRecipePage() {
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -16,7 +17,32 @@ function CreateRecipePage() {
   });
 
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    async function loadRecipe() {
+      try {
+        const recipe = await getRecipeById(id);
+
+        setFormData({
+          title: recipe.title || "",
+          image: recipe.image || "",
+          category: recipe.category || "",
+          level: recipe.level || "",
+          preptime: recipe.preptime || "",
+          ingredients: recipe.ingredients || "",
+          instructions: recipe.instructions || "",
+        });
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadRecipe();
+  }, [id]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -33,7 +59,7 @@ function CreateRecipePage() {
     setIsSubmitting(true);
 
     try {
-      await createRecipe({
+      await updateRecipe(id, {
         ...formData,
         preptime: Number(formData.preptime),
       });
@@ -46,11 +72,17 @@ function CreateRecipePage() {
     }
   }
 
+  if (isLoading) {
+    return <p>Cargando datos de la receta...</p>;
+  }
+
   return (
     <div className="form-page">
       <div className="form-card">
-        <h1>Crear Nueva Receta</h1>
+        <h1>Editar receta</h1>
+
         {error && <p className="form-error">{error}</p>}
+
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Título</label>
@@ -117,13 +149,14 @@ function CreateRecipePage() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="ingredients">Ingredientes</label>
+            <label htmlFor="ingredients">
+              Ingredientes (separados por comas)
+            </label>
             <textarea
               id="ingredients"
               name="ingredients"
               value={formData.ingredients}
               onChange={handleChange}
-              placeholder="Ej: 1 kg de tomates, 1 diente de ajo, 3 gr de orégano"
               required
             />
           </div>
@@ -135,13 +168,12 @@ function CreateRecipePage() {
               name="instructions"
               value={formData.instructions}
               onChange={handleChange}
-              placeholder="Describe paso a paso cómo preparar la receta, ej: corta la cebolla en juliana"
               required
             />
           </div>
 
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Creando receta..." : "Crear receta"}
+            {isSubmitting ? "Guardando cambios..." : "Guardar cambios"}
           </button>
         </form>
       </div>
@@ -149,4 +181,4 @@ function CreateRecipePage() {
   );
 }
 
-export default CreateRecipePage;
+export default EditRecipePage;

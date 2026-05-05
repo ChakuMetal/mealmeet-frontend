@@ -5,6 +5,10 @@ import RegisterPage from "../pages/RegisterPage";
 import RecipesPage from "../pages/RecipesPage";
 import CreateRecipePage from "../pages/CreateRecipePage";
 import MyRecipesPage from "../pages/MyRecipesPage";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
+import Navbar from "../components/layout/Navbar";
+import RecipeDetailPage from "../pages/RecipeDetailPage";
+import EditRecipePage from "../pages/EditRecipePage";
 
 // Para qué sirve AppRouter:
 // Organiza todas las rutas (URLs) de la app en un solo lugar.
@@ -17,17 +21,49 @@ import MyRecipesPage from "../pages/MyRecipesPage";
 function AppRouter() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         {/* Rutas públicas - cualquiera puede acceder */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/recipes/:id" element={<RecipeDetailPage />} />
 
         {/* Rutas privadas - solo usuarios autenticados */}
-        {/* Más adelante protegeremos estas con ProtectedRoute */}
-        <Route path="/create-recipe" element={<CreateRecipePage />} />
-        <Route path="/my-recipes" element={<MyRecipesPage />} />
+        <Route
+          path="/create-recipe"
+          element={
+            <ProtectedRoute>
+              <CreateRecipePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/recipes"
+          element={
+            <ProtectedRoute>
+              <RecipesPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-recipes"
+          element={
+            <ProtectedRoute>
+              <MyRecipesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit-recipe/:id"
+          element={
+            <ProtectedRoute>
+              <EditRecipePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

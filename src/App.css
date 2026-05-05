@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -181,4 +181,249 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+.recipe-list {
+  list-style: none;
+  padding: 24px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  gap: 24px;
+  justify-content: center;
+}
+
+.page-section {
+  padding: 24px;
+  text-align: center;
+}
+
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-link:hover {
+  background-color: #f2f4f7;
+}
+
+.navbar-button {
+  border: none;
+  background-color: #ffe5e5;
+  color: #a12626;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.navbar-button:hover {
+  background-color: #ffd1d1;
+}
+
+.form-page {
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+}
+
+.form-card h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  border: 1px solid #d8dde6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  background-color: #1f4b99;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #173a77;
+}
+
+.form-error {
+  color: #a12626;
+  font-weight: 600;
+}
+
+textarea::placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.home-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px 48px;
+  background: radial-gradient(
+    circle at 20% 20%,
+    #fff9ef 0%,
+    #f7f3ee 55%,
+    #efe6db 100%
+  );
+}
+
+.home-hero {
+  width: min(920px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #eadfce;
+  border-radius: 22px;
+  padding: 34px 26px;
+  box-shadow: 0 16px 40px rgba(53, 43, 31, 0.08);
+  backdrop-filter: blur(4px);
+}
+
+.home-logo {
+  width: clamp(187px, 25.9vw, 274px);
+  height: auto;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+}
+
+.home-subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #4e3f2f;
+  max-width: 680px;
+}
+
+.home-description {
+  margin: 2px 0 0;
+  font-size: clamp(0.98rem, 1.7vw, 1.08rem);
+  color: #6a5846;
+  max-width: 620px;
+}
+
+.home-ctas {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-ctas a {
+  text-decoration: none;
+  padding: 11px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid #355c4b;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.home-ctas a:first-child {
+  background: #355c4b;
+  color: #ffffff;
+}
+
+.home-ctas a:last-child {
+  background: #ffffff;
+  color: #355c4b;
+}
+
+.home-ctas a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(53, 92, 75, 0.22);
+}
+
+@media (max-width: 640px) {
+  .home-page {
+    min-height: calc(100svh - 72px);
+    padding-top: 20px;
+  }
+
+  .home-hero {
+    padding: 24px 16px 28px;
+  }
+
+  .home-ctas a {
+    width: 100%;
+  }
+}
+
+.navbar-logo {
+  height: 104px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s ease;
 }
