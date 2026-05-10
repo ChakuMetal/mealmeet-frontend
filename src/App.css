@@ -427,3 +427,27 @@ textarea::placeholder {
   display: block;
   transition: opacity 0.2s ease;
 }
+
+.my-recipes-actions {
+  margin: 14px 0 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.my-recipes-create-btn {
+  text-decoration: none;
+  background: #355c4b;
+  color: #fff;
+  border: 1px solid #355c4b;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.my-recipes-create-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(53, 92, 75, 0.25);
+}

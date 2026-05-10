@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import RecipeCard from "../components/recipes/RecipeCard";
 import useAuth from "../hooks/useAuth";
@@ -63,6 +64,12 @@ function MyRecipesPage() {
     <div className="page-section">
       <h1>Mis Recetas</h1>
       <p>Total de mis recetas: {myRecipes.length}</p>
+      <div className="my-recipes-actions">
+        <Link className="my-recipes-create-btn" to="/create-recipe">
+          Crear receta
+        </Link>
+      </div>
+
       {actionError && <p>{actionError}</p>}
       {myRecipes.length === 0 ? (
         <p>Aún no has creado recetas.</p>
