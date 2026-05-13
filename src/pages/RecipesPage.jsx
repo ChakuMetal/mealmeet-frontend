@@ -23,20 +23,29 @@ function RecipesPage() {
   }, []);
 
   if (isLoading) {
-    return <p>Cargando recetas...</p>;
+    return (
+      <div className="page-section">
+        <p className="recipes-state">Cargando recetas...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div className="page-section">
+        <p className="recipes-state recipes-state-error">{error}</p>
+      </div>
+    );
   }
 
   return (
     <div className="page-section">
-      <h1>Todas las Recetas</h1>
-      <p>Total de recetas: {recipes.length}</p>
-
+      <div className="recipes-header">
+        <h1 className="recipes-title">Todas las Recetas</h1>
+        <p className="recipes-total">Total de recetas: {recipes.length}</p>
+      </div>
       {recipes.length === 0 ? (
-        <p>No hay recetas disponibles todavía.</p>
+        <p className="recipes-state">No hay recetas disponibles todavía.</p>
       ) : (
         <ul className="recipe-list">
           {recipes.map((recipe) => (

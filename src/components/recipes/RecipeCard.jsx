@@ -19,16 +19,15 @@ function RecipeCard({
 
   return (
     <li className="recipe-card">
-      <h2 className="recipe-card-title">
-        <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
-      </h2>
-
       <img
         className="recipe-card-image"
         src={recipe.image}
         alt={recipe.title}
         width="250"
       />
+      <h2 className="recipe-card-title">
+        <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
+      </h2>
       <div className="recipe-card-body">
         <p>
           <strong>Categoría:</strong> {recipe.category}
