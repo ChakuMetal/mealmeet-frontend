@@ -110,3 +110,17 @@
   color: #a12626;
   font-weight: 700;
 }
+
+.recipe-card-title a {
+  color: #355c4b;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.recipe-card-title a:hover {
+  color: #2a4a3c;
+  text-decoration: underline;
+  text-decoration-color: rgba(53, 92, 75, 0.55);
+}

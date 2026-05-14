@@ -26,27 +26,62 @@ function RecipeDetailPage() {
   }, [id]);
 
   if (isLoading) {
-    return <p>Cargando receta...</p>;
+    return (
+      <div className="page-section">
+        <p className="recipe-detail-state">Cargando receta...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div className="page-section">
+        <p className="recipe-detail-state recipe-detail-state-error">{error}</p>
+      </div>
+    );
   }
 
   if (!recipe) {
-    return <p>No se encontró la receta.</p>;
+    return (
+      <div className="page-section">
+        <p className="recipe-detail-state">No se encontró la receta.</p>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <Link to="/recipes">Volver a recetas</Link>
-      <h1>{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} width="300" />
-      <p>Categoría: {recipe.category}</p>
-      <p>Dificultad: {recipe.level}</p>
-      <p>Tiempo de preparación: {recipe.preptime} minutos</p>
-      <p>Ingredientes: {recipe.ingredients}</p>
-      <p>Instrucciones: {recipe.instructions}</p>
+    <div className="recipe-detail-page">
+      <div className="recipe-detail-card">
+        <Link className="recipe-detail-back" to="/recipes">
+          Volver a recetas
+        </Link>
+
+        <img
+          className="recipe-detail-image"
+          src={recipe.image}
+          alt={recipe.title}
+        />
+
+        <h1 className="recipe-detail-title">{recipe.title}</h1>
+
+        <div className="recipe-detail-body">
+          <p>
+            <strong>Categoría:</strong> {recipe.category}
+          </p>
+          <p>
+            <strong>Dificultad:</strong> {recipe.level}
+          </p>
+          <p>
+            <strong>Tiempo de preparación:</strong> {recipe.preptime} minutos
+          </p>
+          <p>
+            <strong>Ingredientes:</strong> {recipe.ingredients}
+          </p>
+          <p>
+            <strong>Instrucciones:</strong> {recipe.instructions}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
