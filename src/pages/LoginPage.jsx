@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { loginUser } from "../services/authService";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [showSessionExpired, setShowSessionExpired] = useState(
+    searchParams.get("expired") === "1",
+  );
   const { login } = useAuth();
 
   const [formData, setFormData] = useState({
@@ -27,6 +31,7 @@ function LoginPage() {
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
+    setShowSessionExpired(false);
 
     try {
       const data = await loginUser(formData);
@@ -44,11 +49,21 @@ function LoginPage() {
     }
   }
 
+  useEffect(() => {
+    if (showSessionExpired) {
+      setSearchParams({}, { replace: true });
+    }
+  }, [showSessionExpired, setSearchParams]);
+
   return (
     <div className="form-page">
       <div className="form-card">
         <h1>Iniciar Sesión</h1>
-
+        {showSessionExpired && (
+          <p className="form-info">
+            Tu sesión ha expirado. Por favor, inicia sesión nuevamente.
+          </p>
+        )}
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>

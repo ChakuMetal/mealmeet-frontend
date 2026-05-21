@@ -519,3 +519,10 @@ textarea::placeholder {
   color: #a12626;
   font-weight: 700;
 }
+
+.form-info {
+  margin: 0 0 12px;
+  color: #355c4b;
+  font-weight: 600;
+  text-align: center;
+}
