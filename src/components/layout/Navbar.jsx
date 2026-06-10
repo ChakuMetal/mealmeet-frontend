@@ -44,6 +44,10 @@ function Navbar() {
               Mis Recetas
             </NavLink>
             {" | "}
+            <NavLink className="navbar-link" to="/swipe-recipes">
+              Swipe
+            </NavLink>
+            {" | "}
             <button className="navbar-button" onClick={handleLogout}>
               Cerrar sesión
             </button>

@@ -65,7 +65,7 @@ function MyRecipesPage() {
       <h1>Mis Recetas</h1>
       <p>Total de mis recetas: {myRecipes.length}</p>
       <div className="my-recipes-actions">
-        <Link className="my-recipes-create-btn" to="/create-recipe">
+        <Link className="my-recipes-create-btn" to="/create-recipe" S>
           Crear receta
         </Link>
       </div>

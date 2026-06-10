@@ -9,6 +9,9 @@ import ProtectedRoute from "../components/layout/ProtectedRoute";
 import Navbar from "../components/layout/Navbar";
 import RecipeDetailPage from "../pages/RecipeDetailPage";
 import EditRecipePage from "../pages/EditRecipePage";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
+import SwipeRecipesPage from "../pages/SwipeRecipesPage";
 
 // Para qué sirve AppRouter:
 // Organiza todas las rutas (URLs) de la app en un solo lugar.
@@ -28,6 +31,8 @@ function AppRouter() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/recipes/:id" element={<RecipeDetailPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
 
         {/* Rutas privadas - solo usuarios autenticados */}
         <Route
@@ -61,6 +66,14 @@ function AppRouter() {
           element={
             <ProtectedRoute>
               <EditRecipePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/swipe-recipes"
+          element={
+            <ProtectedRoute>
+              <SwipeRecipesPage />
             </ProtectedRoute>
           }
         />

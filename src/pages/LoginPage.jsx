@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { loginUser } from "../services/authService";
 
@@ -88,7 +88,9 @@ function LoginPage() {
               required
             />
           </div>
-
+          <p className="form-link">
+            <Link to="/forgot-password">Olvidé mi contraseña</Link>
+          </p>
           {error && <p className="form-error">{error}</p>}
 
           <button type="submit" disabled={isSubmitting}>
