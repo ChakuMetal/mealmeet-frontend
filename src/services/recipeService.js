@@ -53,3 +53,14 @@ export async function updateRecipe(recipeId, recipeData) {
     throw new Error(message);
   }
 }
+
+export async function likeRecipe(recipeId) {
+  try {
+    const response = await api.post(`/recipes/${recipeId}/like`);
+    return response.data;
+  } catch (error) {
+    const message =
+      error.response?.data?.message || "Error al guardar me gusta";
+    throw new Error(message);
+  }
+}
