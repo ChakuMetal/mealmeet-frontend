@@ -186,3 +186,4 @@
 
 .swipe-card.swipe-drag-pass .swipe-image {
   animation: swipe-pass-pulse 0.55s ease-in-out infinite alternate;
+}
