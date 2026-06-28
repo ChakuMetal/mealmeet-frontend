@@ -117,3 +117,72 @@
   color: #6a5846;
   font-weight: 500;
 }
+
+.swipe-card {
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+
+.swipe-card:active {
+  cursor: grabbing;
+}
+
+.swipe-image {
+  transition:
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.swipe-card.swipe-drag-like .swipe-image {
+  box-shadow:
+    0 0 0 6px rgba(31, 122, 58, 0.52),
+    0 0 36px rgba(31, 122, 58, 0.55),
+    0 0 70px rgba(31, 122, 58, 0.35);
+  filter: brightness(1.08) saturate(1.2) contrast(1.03);
+}
+
+.swipe-card.swipe-drag-pass .swipe-image {
+  box-shadow:
+    0 0 0 6px rgba(161, 38, 38, 0.5),
+    0 0 36px rgba(161, 38, 38, 0.52),
+    0 0 70px rgba(161, 38, 38, 0.32);
+  filter: brightness(0.95) saturate(0.82) contrast(1.04);
+}
+
+@keyframes swipe-like-pulse {
+  0% {
+    box-shadow:
+      0 0 0 6px rgba(31, 122, 58, 0.45),
+      0 0 26px rgba(31, 122, 58, 0.45),
+      0 0 50px rgba(31, 122, 58, 0.24);
+  }
+  100% {
+    box-shadow:
+      0 0 0 8px rgba(31, 122, 58, 0.62),
+      0 0 44px rgba(31, 122, 58, 0.68),
+      0 0 86px rgba(31, 122, 58, 0.46);
+  }
+}
+
+@keyframes swipe-pass-pulse {
+  0% {
+    box-shadow:
+      0 0 0 6px rgba(161, 38, 38, 0.42),
+      0 0 26px rgba(161, 38, 38, 0.42),
+      0 0 50px rgba(161, 38, 38, 0.22);
+  }
+  100% {
+    box-shadow:
+      0 0 0 8px rgba(161, 38, 38, 0.58),
+      0 0 44px rgba(161, 38, 38, 0.64),
+      0 0 86px rgba(161, 38, 38, 0.42);
+  }
+}
+
+.swipe-card.swipe-drag-like .swipe-image {
+  animation: swipe-like-pulse 0.55s ease-in-out infinite alternate;
+}
+
+.swipe-card.swipe-drag-pass .swipe-image {
+  animation: swipe-pass-pulse 0.55s ease-in-out infinite alternate;
