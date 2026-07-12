@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import logo from "../assets/MealMeet Logo.png";
+import DemoSwipeWidget from "./DemoSwipeWidget";
 
 function HomePage() {
   const { isAuthenticated } = useAuth();
@@ -32,6 +33,13 @@ function HomePage() {
           )}
         </div>
       </div>
+      {!isAuthenticated && (
+        <div className="home-demo-section">
+          <div className="home-demo-wrap">
+            <DemoSwipeWidget />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

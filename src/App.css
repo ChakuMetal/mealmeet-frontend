@@ -63,10 +63,49 @@
   place-content: center;
   place-items: center;
   flex-grow: 1;
+}
 
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .navbar-links {
+    gap: 8px 10px;
+  }
+
+  .navbar-logo {
+    height: 72px;
+  }
+
+  .navbar-link {
+    font-size: 0.94rem;
+    padding: 6px 9px;
+  }
+
+  .navbar-button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 60px;
+  }
+
+  .navbar-links {
+    gap: 6px 8px;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  .navbar-button {
+    font-size: 0.88rem;
+    padding: 6px 9px;
   }
 }
 
@@ -201,7 +240,7 @@
 .navbar {
   background-color: #ffffff;
   border-bottom: 1px solid #e8e8e8;
-  padding: 16px 24px;
+  padding: 12px 18px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -209,8 +248,8 @@
 
 .navbar-links {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  gap: 10px 12px;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -219,9 +258,12 @@
   text-decoration: none;
   color: #333;
   font-weight: 600;
-  padding: 8px 12px;
+  font-size: 0.98rem;
+  padding: 7px 10px;
   border-radius: 8px;
   transition: background-color 0.2s ease;
+  white-space: nowrap;
+  line-height: 1.1;
 }
 
 .navbar-link:hover {
@@ -232,14 +274,100 @@
   border: none;
   background-color: #ffe5e5;
   color: #a12626;
-  padding: 8px 14px;
+  padding: 7px 11px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  line-height: 1.1;
 }
 
 .navbar-button:hover {
   background-color: #ffd1d1;
+}
+
+.navbar-logo {
+  height: 88px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .navbar-logo {
+    height: 72px;
+  }
+
+  .navbar-link {
+    font-size: 0.94rem;
+    padding: 6px 9px;
+  }
+
+  .navbar-button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 62px;
+  }
+
+  .navbar-links {
+    gap: 6px 9px;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  .navbar-button {
+    font-size: 0.88rem;
+    padding: 6px 9px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  .navbar-logo {
+    height: 56px;
+  }
+
+  .navbar-links {
+    gap: 6px 8px;
+    justify-content: flex-start;
+  }
+
+  .navbar-link {
+    font-size: 0.88rem;
+    padding: 4px 7px;
+  }
+
+  .navbar-button {
+    font-size: 0.86rem;
+    padding: 5px 8px;
+  }
+
+  /* Segunda fila centrada: Swipe + Cerrar sesión */
+  .navbar-link[href="/swipe-recipes"] {
+    order: 20;
+    margin-left: auto;
+  }
+
+  .navbar-button {
+    order: 21;
+    margin-right: auto;
+  }
 }
 
 .form-page {
@@ -317,7 +445,7 @@ textarea::placeholder {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 40px 20px 48px;
+  padding: 20px 16px 28px;
   background: radial-gradient(
     circle at 20% 20%,
     #fff9ef 0%,
@@ -327,24 +455,22 @@ textarea::placeholder {
 }
 
 .home-hero {
-  width: min(920px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid #eadfce;
   border-radius: 22px;
-  padding: 34px 26px;
+  padding: 20px 24px 18px;
   box-shadow: 0 16px 40px rgba(53, 43, 31, 0.08);
   backdrop-filter: blur(4px);
 }
-
 .home-logo {
-  width: clamp(187px, 25.9vw, 274px);
+  width: clamp(138px, 16vw, 200px);
   height: auto;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   display: block;
 }
 
@@ -371,9 +497,9 @@ textarea::placeholder {
 }
 
 .home-ctas {
-  margin-top: 14px;
+  margin-top: 8px;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -409,23 +535,50 @@ textarea::placeholder {
 @media (max-width: 640px) {
   .home-page {
     min-height: calc(100svh - 72px);
-    padding-top: 20px;
+    padding: 4px 8px 8px;
+    gap: 0;
   }
 
   .home-hero {
-    padding: 24px 16px 28px;
+    padding: 10px 10px 10px;
+    gap: 4px;
+    border-radius: 16px;
+  }
+
+  .home-logo {
+    width: clamp(82px, 22vw, 112px);
+    margin-bottom: 0;
+  }
+
+  .home-title {
+    margin: 2px 0 0;
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .home-subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .home-description {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  .home-ctas {
+    margin-top: 6px;
+    gap: 8px;
   }
 
   .home-ctas a {
-    width: 100%;
+    width: auto;
+    padding: 8px 12px;
+    font-size: 0.92rem;
+    border-radius: 10px;
   }
-}
-
-.navbar-logo {
-  height: 104px;
-  width: auto;
-  display: block;
-  transition: opacity 0.2s ease;
 }
 
 .my-recipes-actions {
@@ -547,4 +700,58 @@ textarea::placeholder {
   outline: 2px solid #1f4b99;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-demo-section {
+  width: min(760px, 100%);
+  padding: 0 16px 20px;
+  margin-top: -6px;
+}
+
+.home-demo-wrap {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .home-demo-section {
+    padding: 0 8px 8px;
+    margin-top: -8px;
+  }
+
+  .home-demo-wrap .swipe-card {
+    padding: 12px 12px 14px;
+    border-radius: 14px;
+  }
+
+  .home-demo-wrap .swipe-card h1 {
+    font-size: 2rem;
+    margin: 8px 0 4px;
+    line-height: 1.05;
+  }
+
+  .home-demo-wrap .swipe-hint {
+    margin-top: 2px;
+    font-size: 0.9rem;
+  }
+
+  .home-demo-wrap .recipes-total {
+    margin-top: 4px;
+    font-size: 0.95rem;
+  }
+
+  .home-demo-wrap .swipe-image {
+    max-height: 190px;
+  }
+}
+
+@media (max-width: 390px) {
+  .home-description {
+    display: none;
+  }
 }

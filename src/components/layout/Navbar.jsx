@@ -35,19 +35,15 @@ function Navbar() {
 
         {isAuthenticated && (
           <>
-            {" | "}
             <NavLink className="navbar-link" to="/recipes">
-              Explorar todas las recetas
+              Explorar recetas
             </NavLink>
-            {" | "}
             <NavLink className="navbar-link" to="/my-recipes">
-              Mis Recetas
+              Mis recetas
             </NavLink>
-            {" | "}
             <NavLink className="navbar-link" to="/swipe-recipes">
               Swipe
             </NavLink>
-            {" | "}
             <button className="navbar-button" onClick={handleLogout}>
               Cerrar sesión
             </button>

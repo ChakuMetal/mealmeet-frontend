@@ -12,6 +12,7 @@ import EditRecipePage from "../pages/EditRecipePage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import SwipeRecipesPage from "../pages/SwipeRecipesPage";
+import DemoSwipePage from "../pages/DemoSwipePage";
 
 // Para qué sirve AppRouter:
 // Organiza todas las rutas (URLs) de la app en un solo lugar.
@@ -33,6 +34,7 @@ function AppRouter() {
         <Route path="/recipes/:id" element={<RecipeDetailPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+        <Route path="/demo-swipe" element={<DemoSwipePage />} />
 
         {/* Rutas privadas - solo usuarios autenticados */}
         <Route
