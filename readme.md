@@ -200,6 +200,7 @@ Abre 👉 [http://localhost:5173](http://localhost:5173)
 - [ ] Motivos de descarte con chips rápidos
 - [ ] Animación de reacción en botón "Me gusta"
 - [ ] Mejora de analítica de conversión desde demo a registro
+- [ ] Más cosas 😉
 
 ---
 
